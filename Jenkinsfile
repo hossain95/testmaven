@@ -40,7 +40,7 @@ pipeline {
           }
           stage('Build Jars') {
             steps {
-                sh 'mvn clean install package'
+                sh 'mvn clean install package spring-boot:run'
             }
           }
           stage('Run Spring Boot App') {
