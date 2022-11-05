@@ -27,11 +27,11 @@ pipeline {
                 sh 'mvn clean install package'
             }
           }
-//           stage('Run Project'){
-//             steps{
-//                 sh 'spring-boot:run'
-//             }
-//           }
+          stage('Run Project'){
+            steps{
+                echo "run project"
+            }
+          }
 //           stage('Run Spring Boot App') {
 //             steps {
 //                 script {
