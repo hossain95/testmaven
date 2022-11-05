@@ -30,7 +30,7 @@ pipeline {
           stage('Run Project'){
             steps{
                 echo "run project"
-                if(env.envSelected == "dev"){
+                if(envSelected == "dev"){
                     echo "running dev environment"
                 }
                 else{
