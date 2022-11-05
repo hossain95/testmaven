@@ -12,17 +12,17 @@ pipeline {
         )
     }
      stages {
-          stage('SonarQube Analysis') {
-            steps {
-                //def mvn = tool 'MAVEN_HOME';
-                withSonarQubeEnv('sonarqube') {
-                    sh "mvn clean package sonar:sonar"
-                }
-                timeout(time: 4, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-          }
+//           stage('SonarQube Analysis') {
+//             steps {
+//                 //def mvn = tool 'MAVEN_HOME';
+//                 withSonarQubeEnv('sonarqube') {
+//                     sh "mvn clean package sonar:sonar"
+//                 }
+//                 timeout(time: 4, unit: 'MINUTES') {
+//                     waitForQualityGate abortPipeline: true
+//                 }
+//             }
+//           }
           stage('Build Jars') {
             steps {
                 sh 'mvn clean package'
