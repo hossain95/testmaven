@@ -46,8 +46,8 @@ pipeline {
           stage('SonarQube Analysis') {
             steps {
                 //def mvn = tool 'MAVEN_HOME';
-                withSonarQubeEnv('sonar') {
-                    sh "mvn sonar:sonar"
+                withSonarQubeEnv('sonarqube') {
+                    sh "mvn sonarqube:sonarqube"
                 }
                 timeout(time: 4, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
