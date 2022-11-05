@@ -4,42 +4,43 @@ pipeline {
         maven 'mvn'
         //version 3.0.5
     }
-    parameters {
-        choice(
-            name: 'envSelected',
-            choices: ['dev', 'test', 'prod'],
-            description: 'Please choose en environment where you want to run?'
-        )
-    }
-     stages {
-          stage('unit test') {
-            steps {
-                echo "Environment selected: ${params.envSelected}"
-                sh 'mvn test -Punit-tests'
-            }
-            post {
-                failure {
-                    mail to: 'akterhossain1600@gmail.com',
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your Unit Tests',
-                        body: 'Unit Test Cases Failure'
-                }
-            }
-          }
-          stage('integration test') {
-            steps {
-                echo "Environment selected: ${params.envSelected}"
-                sh 'mvn test -Pintegration-tests'
-            }
-            post {
-                failure {
-                    mail to: 'akterhossain1600@gmail.com',
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
-                        body: 'Integration Test Cases Failure'
-                }
-            }
-          }
+//     parameters {
+//         choice(
+//             name: 'envSelected',
+//             choices: ['dev', 'test', 'prod'],
+//             description: 'Please choose en environment where you want to run?'
+//         )
+//     }
+//      stages {
+//           stage('unit test') {
+//             steps {
+//                 echo "Environment selected: ${params.envSelected}"
+//                 sh 'mvn test -Punit-tests'
+//             }
+//             post {
+//                 failure {
+//                     mail to: 'akterhossain1600@gmail.com',
+//                         subject: 'Dude your Azuga-RUC Pipeline failed. Check your Unit Tests',
+//                         body: 'Unit Test Cases Failure'
+//                 }
+//             }
+//           }
+//           stage('integration test') {
+//             steps {
+//                 echo "Environment selected: ${params.envSelected}"
+//                 sh 'mvn test -Pintegration-tests'
+//             }
+//             post {
+//                 failure {
+//                     mail to: 'akterhossain1600@gmail.com',
+//                         subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
+//                         body: 'Integration Test Cases Failure'
+//                 }
+//             }
+//           }
           stage('Build Jars') {
             steps {
+                echo "-----------------maven clean install and package----------------"
                 sh 'mvn clean install package spring-boot:run'
             }
           }
