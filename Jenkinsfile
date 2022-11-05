@@ -11,17 +11,18 @@ pipeline {
         )
     }
      stages {
-//           stage('SonarQube Analysis') {
-//             steps {
-//                 //def mvn = tool 'MAVEN_HOME';
+          stage('SonarQube Analysis') {
+            steps {
+                echo "sonar qube running"
+                //def mvn = tool 'MAVEN_HOME';
 //                 withSonarQubeEnv('sonarqube') {
 //                     sh "mvn clean package sonar:sonar"
 //                 }
 //                 timeout(time: 4, unit: 'MINUTES') {
 //                     waitForQualityGate abortPipeline: true
 //                 }
-//             }
-//           }
+            }
+          }
           stage('Build Jars') {
             steps {
                 sh 'mvn clean install package'
@@ -33,7 +34,7 @@ pipeline {
                     echo "run project"
                     if(env.envSelected == "dev"){
                        echo "running dev environment"
-                       ansiblePlaybook inventory: 'dev.inv'
+                       //ansiblePlaybook inventory: 'dev.inv'
                     }
                     else{
                           echo "running prod environment"
