@@ -4,13 +4,13 @@ pipeline {
         maven 'MAVEN_HOME'
         //version 3.0.5
     }
-//     parameters {
-//         choice(
-//             name: 'envSelected',
-//             choices: ['dev', 'test', 'prod'],
-//             description: 'Please choose en environment where you want to run?'
-//         )
-//     }
+    parameters {
+        choice(
+            name: 'envSelected',
+            choices: ['dev', 'test', 'prod'],
+            description: 'Please choose en environment where you want to run?'
+        )
+    }
      stages {
 //       stage('git clone') {
 //         steps {
@@ -45,7 +45,7 @@ pipeline {
 //           }
           stage('SonarQube Analysis') {
             steps {
-                //def mvn = tool 'mvn';
+                def mvn = tool 'MAVEN_HOME';
                 withSonarQubeEnv('sonar') {
                     sh "mvn sonar:sonar"
                 }
