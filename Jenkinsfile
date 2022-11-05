@@ -41,7 +41,7 @@ pipeline {
           stage('Build Jars') {
             steps {
                 //echo "-----------------maven clean install and package----------------"
-                sh 'mvn clean install package compile spring-boot:run'
+                //sh 'mvn clean install package compile spring-boot:run'
             }
           }
           stage('Run Spring Boot App') {
