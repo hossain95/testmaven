@@ -42,6 +42,11 @@ pipeline {
                 }
             }
           }
+          stage('deploy project'){
+            steps{
+                echo "deploy project to the server"
+            }
+          }
 //           stage('Run Spring Boot App') {
 //             steps {
 //                 script {
