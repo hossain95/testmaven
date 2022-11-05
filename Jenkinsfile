@@ -45,13 +45,13 @@ pipeline {
 //           }
           stage('SonarQube Analysis') {
             steps {
-                def mvn = tool 'MAVEN_HOME';
+                //def mvn = tool 'MAVEN_HOME';
                 withSonarQubeEnv('sonar') {
                     sh "mvn sonar:sonar"
                 }
-    //             timeout(time: 4, unit: 'MINUTES') {
-    //                 waitForQualityGate abortPipeline: true
-    //             }
+                timeout(time: 4, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
           }
           stage('Build Jars') {
