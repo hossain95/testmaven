@@ -2,8 +2,6 @@ pipeline {
     agent any
     tools {
         maven 'MAVEN_HOME'
-        sonar 'SONARQUBE_HOME'
-
     }
     parameters {
         choice(
@@ -13,15 +11,6 @@ pipeline {
         )
     }
      stages {
-          stage('SonarQube Analysis') {
-            steps {
-                echo "sonar qube running"
-                withSonarQubeEnv('sonar') {
-                                    sh "mvn sonar:sonar"
-                                }
-            }
-          }
-
           stage('Build Jars') {
             steps {
                 sh 'mvn clean install package compile'
