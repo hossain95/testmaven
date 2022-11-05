@@ -40,8 +40,10 @@ pipeline {
           stage('deploy project'){
             steps{
                 echo "deploy project to the server"
+                sh 'mvn spring-boot:run'
             }
           }
+
 
 //           stage('Run Spring Boot App') {
 //             steps {
