@@ -1,8 +1,8 @@
 pipeline {
     agent any
-//     tools {
-//         maven 'MAVEN_HOME'
-//     }
+    tools {
+        maven 'MAVEN_HOME'
+    }
     parameters {
         choice(
             name: 'envSelected',
