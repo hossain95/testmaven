@@ -17,32 +17,32 @@ pipeline {
 //           git branch: 'dev', url: 'https://github.com/Viveksingh1313/springboot-test.git'
 //         }
 //       }
-          stage('unit test') {
-            steps {
-                echo "Environment selected: ${params.envSelected}"
-                sh 'mvn test -Punit-tests'
-            }
-            post {
-                failure {
-                    mail to: 'akterhossain1600@gmail.com',
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your Unit Tests',
-                        body: 'Unit Test Cases Failure'
-                }
-            }
-          }
-          stage('integration test') {
-            steps {
-                echo "Environment selected: ${params.envSelected}"
-                sh 'mvn test -Pintegration-tests'
-            }
-            post {
-                failure {
-                    mail to: 'akterhossain1600@gmail.com',
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
-                        body: 'Integration Test Cases Failure'
-                }
-            }
-          }
+//           stage('unit test') {
+//             steps {
+//                 echo "Environment selected: ${params.envSelected}"
+//                 sh 'mvn test -Punit-tests'
+//             }
+//             post {
+//                 failure {
+//                     mail to: 'akterhossain1600@gmail.com',
+//                         subject: 'Dude your Azuga-RUC Pipeline failed. Check your Unit Tests',
+//                         body: 'Unit Test Cases Failure'
+//                 }
+//             }
+//           }
+//           stage('integration test') {
+//             steps {
+//                 echo "Environment selected: ${params.envSelected}"
+//                 sh 'mvn test -Pintegration-tests'
+//             }
+//             post {
+//                 failure {
+//                     mail to: 'akterhossain1600@gmail.com',
+//                         subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
+//                         body: 'Integration Test Cases Failure'
+//                 }
+//             }
+//           }
           stage('SonarQube Analysis') {
             steps {
                 //def mvn = tool 'mvn';
