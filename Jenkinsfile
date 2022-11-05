@@ -30,6 +30,12 @@ pipeline {
           stage('Run Project'){
             steps{
                 echo "run project"
+                if(env.envSelected == "dev"){
+                    echo "running dev environment"
+                }
+                else{
+                    echo "running prod environment"
+                }
             }
           }
 //           stage('Run Spring Boot App') {
