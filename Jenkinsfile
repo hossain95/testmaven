@@ -14,39 +14,35 @@ pipeline {
           stage('SonarQube Analysis') {
             steps {
                 echo "sonar qube running"
-                //def mvn = tool 'MAVEN_HOME';
-//                 withSonarQubeEnv('sonarqube') {
-//                     sh "mvn clean package sonar:sonar"
-//                 }
-//                 timeout(time: 4, unit: 'MINUTES') {
-//                     waitForQualityGate abortPipeline: true
-//                 }
             }
           }
+
           stage('Build Jars') {
             steps {
                 sh 'mvn clean install package'
             }
           }
+
           stage('Run Project'){
             steps{
                 script{
                     echo "run project"
                     if(env.envSelected == "dev"){
-                       echo "running dev environment"
-                       //ansiblePlaybook inventory: 'dev.inv'
+                        echo "running dev environment"
                     }
                     else{
-                          echo "running prod environment"
+                        echo "running prod environment"
                     }
                 }
             }
           }
+
           stage('deploy project'){
             steps{
                 echo "deploy project to the server"
             }
           }
+
 //           stage('Run Spring Boot App') {
 //             steps {
 //                 script {
