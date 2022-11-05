@@ -33,6 +33,7 @@ pipeline {
                     echo "run project"
                     if(env.envSelected == "dev"){
                        echo "running dev environment"
+                       ansiblePlaybook inventory: 'dev.inv'
                     }
                     else{
                           echo "running prod environment"
