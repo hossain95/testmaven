@@ -6,7 +6,7 @@ pipeline {
     parameters {
         choice(
             name: 'envSelected',
-            choices: ['dev', 'test', 'prod'],
+            choices: ['dev', 'prod'],
             description: 'Please choose en environment where you want to run?'
         )
     }
@@ -27,11 +27,11 @@ pipeline {
                 sh 'mvn clean install package'
             }
           }
-          stage('Run Project'){
-            steps{
-                sh 'spring-boot:run'
-            }
-          }
+//           stage('Run Project'){
+//             steps{
+//                 sh 'spring-boot:run'
+//             }
+//           }
 //           stage('Run Spring Boot App') {
 //             steps {
 //                 script {
