@@ -13,7 +13,7 @@ pipeline {
      stages {
           stage('Build Jars') {
             steps {
-                sh 'mvn clean install package compile'
+                sh 'mvn clean package'
             }
           }
 
