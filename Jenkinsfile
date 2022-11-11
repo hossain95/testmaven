@@ -10,12 +10,6 @@ pipeline {
             description: 'Please choose en environment where you want to run?'
         )
     }
-     stages{
-        stage('Git CheckOut'){
-            steps{
-                git 'https://github.com/hossain95/testmaven.git'
-            }
-        }
      stages {
           stage('Build Jars') {
             steps {
@@ -42,7 +36,6 @@ pipeline {
                 echo "deploy project to the server"
                 ansiblePlaybook (credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ANSIBLE_HOME', inventory: 'hosts', playbook: 'ansible.yml')                //sh 'mvn spring-boot:run'
             }
-          }
           }
     }
 }
