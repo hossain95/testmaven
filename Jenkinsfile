@@ -3,13 +3,20 @@ pipeline {
     tools {
         maven 'MAVEN_HOME'
     }
-    parameters {
-        choice(
-            name: 'envSelected',
-            choices: ['dev', 'prod'],
-            description: 'Please choose en environment where you want to run?'
-        )
-    }
+//     parameters {
+//         choice(
+//             name: 'envSelected',
+//             choices: ['dev', 'prod'],
+//             description: 'Please choose en environment where you want to run?'
+//         )
+//     }
+     stages{
+        stage('Git CheckOut'){
+            steps{
+                git 'https://github.com/hossain95/testmaven.git'
+            }
+        }
+     }
      stages {
           stage('Build Jars') {
             steps {
@@ -34,8 +41,7 @@ pipeline {
           stage('deploy project'){
             steps{
                 echo "deploy project to the server"
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ANSIBLE_HOME', inventory: 'hosts.inv', playbook: 'ansible.yml'
-                //sh 'mvn spring-boot:run'
+                ansiblePlaybook (credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ANSIBLE_HOME', inventory: 'hosts', playbook: 'ansible.yml')                //sh 'mvn spring-boot:run'
             }
           }
 
