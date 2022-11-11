@@ -16,7 +16,6 @@ pipeline {
                 git 'https://github.com/hossain95/testmaven.git'
             }
         }
-     }
      stages {
           stage('Build Jars') {
             steps {
