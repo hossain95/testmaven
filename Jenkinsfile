@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'MAVEN_HOME'
-        ansible 'ANSIBLE_HOME'
+        //ansible 'ANSIBLE_HOME'
     }
     parameters {
         choice(
