@@ -1,6 +1,11 @@
 ---
-- hosts: webservers
-  connection: localhost
+- name: ansible module
+  hosts: servers
+  become: false
   tasks:
-   - name: Run jar
-     shell: java -jar target/demo-0.0.1-SNAPSHOT.jar
+    - name: copy jar file to remote server
+      ansible.builtin.copy:
+        src: ./hosts
+        dest: /home/hossain/Desktop
+        owner: hossain
+        mode: "0644"
