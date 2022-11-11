@@ -3,13 +3,13 @@ pipeline {
     tools {
         maven 'MAVEN_HOME'
     }
-//     parameters {
-//         choice(
-//             name: 'envSelected',
-//             choices: ['dev', 'prod'],
-//             description: 'Please choose en environment where you want to run?'
-//         )
-//     }
+    parameters {
+        choice(
+            name: 'envSelected',
+            choices: ['dev', 'prod'],
+            description: 'Please choose en environment where you want to run?'
+        )
+    }
      stages{
         stage('Git CheckOut'){
             steps{
