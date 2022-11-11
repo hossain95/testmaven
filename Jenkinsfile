@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'MAVEN_HOME'
-//         ansible 'ANSIBLE_HOME'
+        ansible 'ANSIBLE_HOME'
     }
     parameters {
         choice(
@@ -35,7 +35,8 @@ pipeline {
           stage('deploy project'){
             steps{
                 echo "deploy project to the server"
-                ansiblePlaybook (credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ANSIBLE_HOME', inventory: './hosts', playbook: './ansible.yml')                //sh 'mvn spring-boot:run'
+                ansiblePlaybook (credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ANSIBLE_HOME', inventory: './hosts', playbook: './ansible.yml')
+                //sh 'mvn spring-boot:run'
             }
           }
     }
