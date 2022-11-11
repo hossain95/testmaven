@@ -34,6 +34,7 @@ pipeline {
           stage('deploy project'){
             steps{
                 echo "deploy project to the server"
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ANSIBLE_HOME', inventory: 'hosts.inv', playbook: 'ansible.yml'
                 //sh 'mvn spring-boot:run'
             }
           }

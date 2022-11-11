@@ -5,7 +5,7 @@
   tasks:
     - name: copy jar file to remote server
       ansible.builtin.copy:
-        src: ./hosts
+        src: ./ansible.yml
         dest: /home/hossain/Desktop
         owner: hossain
         mode: "0644"
