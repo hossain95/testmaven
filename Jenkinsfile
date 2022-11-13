@@ -35,6 +35,8 @@ pipeline {
           stage('deploy project'){
             steps{
                 echo "deploy project to the server"
+                def workspace = pwd()
+                echo workspace
             }
           }
     }
