@@ -35,7 +35,7 @@ pipeline {
           stage('deploy project'){
             steps{
                 echo "deploy project to the server"
-                sh 'ansible-playbook ansible.yml,
+                sh 'ansible-playbook ansible.yml'
             }
           }
     }
