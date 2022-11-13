@@ -6,6 +6,6 @@
     - name: copy jar file to remote server
       ansible.builtin.copy:
         src: /var/lib/jenkins/workspace/test_pipeline/target/sample.jar
-        dest: /Users/miahossain/Public/
-        owner: miahossain
+        dest:
+        owner:
         mode: "0644"
